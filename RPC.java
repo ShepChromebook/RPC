@@ -163,8 +163,10 @@ public class RPC {
 
         //iterate through 0 to 5 to print lines 0 to 5
         for (int i=0; i<6; i++) {
-            System.out.print(" \n,"+leftRPC[i + 6*pChoice - 6]+"   ");
-            System.out.println(","+rightRPC[i + 6*cpuChoice - 6]);
+            System.out.print(leftRPC [i + 6*pChoice - 6]);
+            System.out.print("   ");
+            System.out.print(rightRPC[i + 6*cpuChoice -6]);
+            System.out.println();
             wait(70);
         }
 
