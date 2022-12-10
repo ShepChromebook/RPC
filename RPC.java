@@ -180,7 +180,7 @@ public class RPC {
             wait(1600);
             System.out.println(" \n---\nOop we're done! Final Score:\nPlayer: "+pWins+"\nMe: "+cpuWins);
             wait(1000);
-            System.out.println("======================\n");
+            System.out.println("=============================\n\n\n\n");
             pWins = 0;
             cpuWins = 0;
             main(leftRPC);
