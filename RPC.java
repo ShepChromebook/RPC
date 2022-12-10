@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.*;
-public class RPC {
+public class RPS {
     /* --------- Below is a bunch of fields --------- */
     private static Scanner input = new Scanner(System.in);
     private static String exitMsg = "You won't see me again";
@@ -15,7 +15,7 @@ public class RPC {
     private static int pChoice = -1;
 
     //The hand on the left, the Player's.
-    private static String[] leftRPC = new String[] {
+    private static String[] leftRPS = new String[] {
         "You _______       ", //'You' to show which side is You or CPU
         "---'   ____)      ", //All of the ascii art is 18 chars
         "      (_____)     ", //In individual lines so I can stack it against the other hand
@@ -23,7 +23,7 @@ public class RPC {
         "      (____)      ",
         "---.__(___)       ",
 
-        "You ________      ", //leftRPC[6]
+        "You ________      ", //leftRPS[6]
         "---'    ____)____ ",
         "           ______)",
         "           ______)",
@@ -37,7 +37,7 @@ public class RPC {
         "      (____)      ",
         "---.__(___)       "  };
     //the hand on the right, the CPU's.
-    private static String[] rightRPC = new String[] {
+    private static String[] rightRPS = new String[] {
         "   CPU _______    ",
         "      (____   '---",
         "     (_____)      ",
@@ -127,9 +127,9 @@ public class RPC {
         wait(200);
 
         System.out.println("Now, choose Rock (R), Paper (P), or Scissors (S).");
-        chooseRPC();
+        chooseRPS();
     }
-    public static void chooseRPC() {
+    public static void chooseRPS() {
         randomCpuChoice(); //randomize cpu's choice before the Results()
 
         String INPUT = input.nextLine().toLowerCase();
@@ -145,7 +145,7 @@ public class RPC {
                 break;
             default:
                 System.out.println("I didn't understand that. Try saying R, P, or C.");
-                chooseRPC();
+                chooseRPS();
         }
         System.out.println("Alright!");
 
@@ -163,7 +163,7 @@ public class RPC {
 
         //iterate through 0 to 5 to print lines 0 to 5
         for (int i=0; i<6; i++) {
-            System.out.println(leftRPC[i + 6*(pChoice-1)] +"   "+ rightRPC[i + 6*(cpuChoice-1)]);
+            System.out.println(leftRPS[i + 6*(pChoice-1)] +"   "+ rightRPS[i + 6*(cpuChoice-1)]);
             wait(70);
         }
         System.out.print(" \n"+whoWon());
@@ -175,7 +175,7 @@ public class RPC {
             System.out.println("Next round starting in a second..");
             wait(2800);
             System.out.println("\n* - * - * - * - * - *\nChoose Rock (R), Paper (P), or Scissors (S)");
-            chooseRPC();
+            chooseRPS();
         } else {
             wait(1600);
             System.out.println(" \n---\nOop we're done! Final Score:\nPlayer: "+pWins+"\nMe: "+cpuWins);
@@ -183,7 +183,7 @@ public class RPC {
             System.out.println("=============================\n\n\n\n");
             pWins = 0;
             cpuWins = 0;
-            main(leftRPC);
+            main(leftRPS);
         }
     }
     public static String whoWon() {
