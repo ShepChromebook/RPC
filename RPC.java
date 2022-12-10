@@ -95,15 +95,16 @@ public class RPC {
      */
 
     public static void main(String[] args) {
-        //Start the sequence of everything requiring player input
         System.out.println("Wanna play Rock Paper Scissors?");
         start();
     }
     public static void start() {
         //Check Y/N, recursion if gibberish
         String CHOOSE = input.nextLine().toLowerCase();
+
         if (CHOOSE.equals("no") || CHOOSE.equals("n"))
             System.out.println(exitMsg);
+        
         else if (CHOOSE.equals("yes") || CHOOSE.equals("y")) {
             System.out.println("How many games should we do? Best out of: _");
             chooseBestOutOf();
@@ -114,6 +115,7 @@ public class RPC {
     }
     public static void chooseBestOutOf() {
         String INPUT = input.nextLine();
+        
         //Check for positive ints
         Pattern pattern = Pattern.compile("^[1-9]+$"); //I wrote regex myself :D
         Matcher matcher = pattern.matcher(INPUT);
@@ -124,33 +126,34 @@ public class RPC {
         }
         bestOutOf = Integer.parseInt(INPUT);
         System.out.println("Alright! Best out of "+bestOutOf);
+        
         wait(200);
+
         System.out.println("Now, choose Rock (R), Paper (P), or Scissors (S).");
         chooseRPC();
     }
     public static void chooseRPC() {
         //randomize cpu's choice
         randomCpuChoice();
-        //Check R, P, or C. Assign to an int as 1, 2, 3.
+
         String INPUT = input.nextLine().toLowerCase();
-        switch (INPUT) {
-        case "rock":
-        case "r":
-            pChoice = 1;
-            break;
-        case "paper":
-        case "p":
-            pChoice = 2;
-            break;
-        case "scissors":
-        case "s":
-            pChoice = 3;
-            break;
-        default:
-            System.out.println("I didn't understand that. Try saying R, P, or C.");
-            chooseRPC();
+        switch (INPUT) { //Check R, P, or C. Assign to an int as 1, 2, or 3.
+            case "rock": case "r":
+                pChoice = 1;
+                break;
+            case "paper": case "p":
+                pChoice = 2;
+                break;
+            case "scissors": case "s":
+                pChoice = 3;
+                break;
+            default:
+                System.out.println("I didn't understand that. Try saying R, P, or C.");
+                chooseRPC();
         }
         System.out.println("Alright!");
+
+        //Doesn't actually need to be it's own function, but logic looks better if it is
         results();
     }
     public static void results() {
@@ -158,18 +161,14 @@ public class RPC {
         suspense(3,true,200);
 
         System.out.print("I choose");
-        suspense(4,false,250);
+        suspense(4,false,300);
         System.out.println(" "+cpuString); //output: I choose.... SCISSORS!
 
         //iterate through 0 to 5 to print lines 0 to 5
         for (int i=0; i<6; i++) {
-            System.out.print(leftRPC [i + 6*pChoice - 6]);
-            System.out.print("   ");
-            System.out.print(rightRPC[i + 6*cpuChoice -6]);
-            System.out.println();
+            System.out.println(leftRPC[i + 6*pChoice - 6] +"   "+ rightRPC[i + 6*cpuChoice -6]);
             wait(70);
         }
-
         System.out.print(" \n"+whoWon());
 
         if (pWins+cpuWins >= bestOutOf) {
@@ -181,21 +180,21 @@ public class RPC {
             main(leftRPC);
         } else {
             System.out.println("  Next round starting in a second..");
-            wait(1000);
-            System.out.println("\n* - * - * - *\nChoose Rock (R), Paper (P), or Scissors (S)");
+            wait(1200);
+            System.out.println("\n\n* - * - * - * - * - *\nChoose Rock (R), Paper (P), or Scissors (S)");
             chooseRPC();
         }
     }
     public static String whoWon() {
-        System.out.println();
-        if (pChoice == cpuChoice)
-            return "A Tie!!!";
-//1 -> 3 -> 2 -> 1
+        if (pChoice == cpuChoice) return "woah a tie?";
+        
+        //1 -> 3 -> 2 -> 1
         if (pChoice-1 == cpuChoice || (pChoice==1 && cpuChoice==3)) {
             pWins++;
             return "You won!";
         }
+        //else {}
         cpuWins++;
-        return "I Won!!!!";
+        return "I WON!!!!";
     }
 }
