@@ -19,11 +19,11 @@ public class RPC {
         "You _______       ", //'You' to show which side is You or CPU
         "---'   ____)      ", //All of the ascii art is 18 chars
         "      (_____)     ", //In individual lines so I can stack it against the other hand
-        "      (_____)     ",
+        "      (_____)     ", //6 lines, 0-5 6-12 13-20
         "      (____)      ",
         "---.__(___)       ",
 
-        "You ________      ",
+        "You ________      ", //leftRPC[6]
         "---'    ____)____ ",
         "           ______)",
         "           ______)",
@@ -35,8 +35,7 @@ public class RPC {
         "           ______)",
         "       __________)",
         "      (____)      ",
-        "---.__(___)       "
-    };
+        "---.__(___)       "  };
     //the hand on the right, the CPU's.
     private static String[] rightRPC = new String[] {
         "   CPU _______    ",
@@ -58,10 +57,9 @@ public class RPC {
         "(_______          ",
         "(__________       ",
         "      (____)      ",
-        "       (___)__.---"
-    };
+        "       (___)__.---"  };
+    /* =============== Re-Used Functions =============== */
     private static void randomCpuChoice() {
-        //Randomize cpuChoice
         // *3 gets range 0-2. // +1 transforms to range 1-3.
         cpuChoice = (int)( Math.random()*3+1 );
 
@@ -70,9 +68,8 @@ public class RPC {
         else if (cpuChoice == 2) cpuString = "PAPER!";
         else if (cpuChoice == 3) cpuString = "SCISSORS!";
     }
-    //A simple wait function
     private static void wait(int ms) {
-        try {
+        try { //.sleep() fror `ms` MILLISECONDS
             TimeUnit.MILLISECONDS.sleep(ms);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
@@ -89,7 +86,7 @@ public class RPC {
     /*
      * ====================================================
      *           ^ Above is a bunch of fields ^
-     *      -- I should extend to a different class--
+     * 
      *           v Below interacts with user  v
      * ====================================================
      */
@@ -123,7 +120,7 @@ public class RPC {
         if (!matchFound) {
             System.out.println("I didn't understand that. Try saying a positive Integer:");
             chooseBestOutOf();
-        }
+        } // else {}
         bestOutOf = Integer.parseInt(INPUT);
         System.out.println("Alright! Best out of "+bestOutOf);
         
@@ -133,8 +130,7 @@ public class RPC {
         chooseRPC();
     }
     public static void chooseRPC() {
-        //randomize cpu's choice
-        randomCpuChoice();
+        randomCpuChoice(); //randomize cpu's choice before the Results()
 
         String INPUT = input.nextLine().toLowerCase();
         switch (INPUT) { //Check R, P, or C. Assign to an int as 1, 2, or 3.
@@ -163,30 +159,35 @@ public class RPC {
         System.out.print("I choose");
         suspense(4,false,300);
         System.out.println(" "+cpuString); //output: I choose.... SCISSORS!
+        wait(300);
 
         //iterate through 0 to 5 to print lines 0 to 5
         for (int i=0; i<6; i++) {
-            System.out.println(leftRPC[i + 6*pChoice - 6] +"   "+ rightRPC[i + 6*cpuChoice -6]);
+            System.out.println(leftRPC[i + 6*(pChoice-1)] +"   "+ rightRPC[i + 6*(cpuChoice-1)]);
             wait(70);
         }
         System.out.print(" \n"+whoWon());
 
-        if (pWins+cpuWins >= bestOutOf) {
-            System.out.println(" \n\n---\nOop we're done! Final Score:\nPlayer: "+pWins+"\nMe: "+cpuWins);
-            wait(900);
-            System.out.println(",\n=============\n");
+        if (pWins+cpuWins < bestOutOf) {
+            wait(1000);
+            System.out.println("    Score: You "+pWins+"  Me "+cpuWins);
+            wait(800);
+            System.out.println("Next round starting in a second..");
+            wait(2800);
+            System.out.println("\n* - * - * - * - * - *\nChoose Rock (R), Paper (P), or Scissors (S)");
+            chooseRPC();
+        } else {
+            wait(1600);
+            System.out.println(" \n---\nOop we're done! Final Score:\nPlayer: "+pWins+"\nMe: "+cpuWins);
+            wait(1000);
+            System.out.println("======================\n");
             pWins = 0;
             cpuWins = 0;
             main(leftRPC);
-        } else {
-            System.out.println("  Next round starting in a second..");
-            wait(1200);
-            System.out.println("\n\n* - * - * - * - * - *\nChoose Rock (R), Paper (P), or Scissors (S)");
-            chooseRPC();
         }
     }
     public static String whoWon() {
-        if (pChoice == cpuChoice) return "woah a tie?";
+        if (pChoice == cpuChoice) return "woah, a tie?";
         
         //1 -> 3 -> 2 -> 1
         if (pChoice-1 == cpuChoice || (pChoice==1 && cpuChoice==3)) {
