@@ -46,7 +46,7 @@ public class PenneyGame {
         wait(100);
         System.out.println("Let's say you then bet that HTH happens first.");
         wait(300);
-        System.out.println("\Game simulation:");
+        System.out.println("\nGame simulation:");
         String flips = "";
         for (int i=0; i<100; i++) {
             flips += coinFlip(true);
