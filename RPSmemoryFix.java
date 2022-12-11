@@ -18,7 +18,7 @@ public class RPSmemoryFix {
             // Ask user again if they want to continue playing
             isPlay = isPlay();
         }
-        
+        input.close();
     }
 
     // Below I'm experimenting with VSCode's Intellisense automatically generating documentation
@@ -27,6 +27,20 @@ public class RPSmemoryFix {
      * @return true if user wants to play, false otherwise
      */
     public static boolean isPlay() {
+        String INPUT = "";
         
+        //loop only exits after Yes or No.
+        while (true) {
+            INPUT = input.nextLine().toLowerCase();
+
+            if (INPUT.equals("yes") || INPUT.equals("y"))
+                return true;
+            if (INPUT.equals("no") || INPUT.equals("n"))
+                return false;
+            
+            //remember that Else is implied after every return;
+            
+            System.out.println("I do not understand, try Yes/No.");
+        }
     }
 }
