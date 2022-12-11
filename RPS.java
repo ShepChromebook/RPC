@@ -69,7 +69,7 @@ public class RPS {
         else if (cpuChoice == 3) cpuString = "SCISSORS!";
     }
     private static void wait(int ms) {
-        try { //.sleep() fror `ms` MILLISECONDS
+        try { //.sleep() for `ms` MILLISECONDS
             TimeUnit.MILLISECONDS.sleep(ms);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
