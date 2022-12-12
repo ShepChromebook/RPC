@@ -53,7 +53,7 @@ public class RPSmemoryFix {
                 roundResults(pChoice); //Doesnt need to be own method
                 wait(1000);
 
-                if (pWins+cpuWins < bestOutOf) { //less than bestOutOf
+                if (pWins+cpuWins < bestOutOf && pWins < bestOutOf/2 && cpuWins<bestOutOf/2) {
                     System.out.println("    Score: You "+pWins+"  Me "+cpuWins);
                     wait(800);
                     System.out.println("Next round starting in a second..");
