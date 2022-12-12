@@ -63,4 +63,7 @@ public class PenneyGame {
     public static int cpuChoice(boolean easy,String pChoice) {
         
     }
+    public static int pChoice() {
+        
+    }
 }
