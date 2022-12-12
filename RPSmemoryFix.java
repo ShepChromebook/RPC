@@ -210,9 +210,9 @@ public class RPSmemoryFix {
      * Else, cpu wins
      */
     public static String whoWon(int pChoice, int cpuChoice) {
-        //     3 -> 2 -> 1      //if pChoice is one more than cpuChoice, then player won
-        //1 -> 3            //or if pChoice==1 && cpuChoice == 3
-        if ( (pChoice == cpuChoice+1) || (pChoice==1 && cpuChoice==3)) {
+        //     2 -> 1 -> 0      //if pChoice is one more than cpuChoice, then player won
+        //0 -> 2            //or if pChoice==1 && cpuChoice == 3
+        if ( (pChoice == cpuChoice+1) || (pChoice==0 && cpuChoice==2)) {
             RPSmemoryFix.pWins++;
             return "You won!";
         }
