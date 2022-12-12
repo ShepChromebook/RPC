@@ -53,19 +53,19 @@ public class RPSmemoryFix {
                 roundResults(pChoice); //Doesnt need to be own method
                 wait(1000);
 
-                if (pWins+cpuWins < bestOutOf && pWins < bestOutOf/2 && cpuWins<bestOutOf/2) {
-                    System.out.println("    Score: You "+pWins+"  Me "+cpuWins);
-                    wait(800);
-                    System.out.println("Next round starting in a second..");
-                    wait(2800);
-                    System.out.println("\n* - * - * - * - * - *");
-                } else {
+                if (pWins+cpuWins > bestOutOf || pWins > bestOutOf/2 || cpuWins>bestOutOf/2) {
                     System.out.println("---\nOop we're done! Final Score:\nPlayer: "+pWins+"\nMe: "+cpuWins);
                     wait(1000);
                     System.out.println("=============================\n\n\n\n");
                     RPSmemoryFix.pWins = 0;
                     RPSmemoryFix.cpuWins = 0;
                     inGame = false; //breaks loop
+                } else {
+                    System.out.println("    Score: You "+pWins+"  Me "+cpuWins);
+                    wait(800);
+                    System.out.println("Next round starting in a second..");
+                    wait(2800);
+                    System.out.println("\n* - * - * - * - * - *");
                 }
             }
             System.out.println("Wanna play again?");
