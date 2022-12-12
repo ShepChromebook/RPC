@@ -37,24 +37,13 @@ public class PenneyGame {
         switch (difficulty) {
             case 0:
                 cpuChoice(true);
-                int pChoice = pChoice();
+                int pChoice = pChoice();    break;
             case 1:
                 cpuChoice(false)
-                int pChoice = pChoice();
-            case 2:
+                int pChoice = pChoice();    break;
+            default:
                 int pChoice = pChoice();
                 cpuChoice(false,pChoice);
-        }
-
-        if (difficulty==0) {
-            cpuChoice(true);
-            int pChoice = pChoice();
-        } else if (difficulty==1) {
-            cpuChoice(false);
-            int pChoice = pChoice();
-        } else {
-            int pChoice = pChoice();
-            cpuChoice(false,pChoice);
         }
 
         input.close();
