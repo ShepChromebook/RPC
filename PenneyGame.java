@@ -50,14 +50,36 @@ public class PenneyGame {
         
         input.close();
     }
+    /**
+     * @return true if player inputs "yes"/"y", false otherwise
+     */
     public static boolean chooseExample() {
-        // Input, Yes/No
+        String INPUT = input.nextLine().toLowerCase();
+        if (INPUT.equals("yes") || INPUT.equals("y"))
+            return true;
+        //else
+            System.out.println("Skipping the example then");
+            return false;
     }
+    /**
+     * Simulate game
+     */
     public static void example() {
-        // Simulate game
+        System.out.println("Simulate");
     }
     public static int chooseDifficulty() {
         // Input: 0,1,2 or e,n,h or easy,normal,hard
+        String INPUT = input.nextLine().toLowerCase();
+        switch (INPUT) {
+            case 0: case "e": case "easy":
+                System.out.println("Guess I'll play like a noob");
+                return 0;
+            case 1: case "n": case "normal":
+                return 1;
+            default: case "h": case "hard":
+                System.out.println("Hard it is then")
+                return 2;
+        }
     }
     /**
      * @param difficulty 0)Easy; choose random. 1)Normal; strategy. 2)Hard; reply to pChoice
