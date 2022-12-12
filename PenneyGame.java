@@ -34,18 +34,20 @@ public class PenneyGame {
                     +"  2) Hard: You choose first, I choose strategically");
         int difficulty = chooseDifficulty();
 
-        switch (difficulty) {
-            case 0:
-                cpuChoice(true);
-                int pChoice = pChoice();    break;
-            case 1:
-                cpuChoice(false)
-                int pChoice = pChoice();    break;
-            default:
-                int pChoice = pChoice();
-                cpuChoice(false,pChoice);
+        if (difficulty!=2) {
+            String cpuChoice = cpuChoice(difficulty,"");
+            System.out.println("I'll bet on "+cpuChoice+"\nNow you choose:");
+            String pChoice = pChoice();
+        } else {
+            System.out.println("Alright, you choose first");
+            String pChoice = pChoice();
+            String cpuChoice = cpuChoice(difficulty,pChoice);
+            System.out.println("In that case I'll bet on "+cpuChoice);
         }
+        
 
+        
+        
         input.close();
     }
     public static boolean chooseExample() {
@@ -57,13 +59,15 @@ public class PenneyGame {
     public static int chooseDifficulty() {
         // Input: 0,1,2 or e,n,h or easy,normal,hard
     }
-    public static int cpuChoice(boolean easy) {
-
+    /**
+     * @param difficulty 0)Easy; choose random. 1)Normal; strategy. 2)Hard; reply to pChoice
+     * @param pChoice should be in HHT format
+     * @return cpu's choice
+     */
+    public static String cpuChoice(int difficulty,String pChoice) {
+        // 
     }
-    public static int cpuChoice(boolean easy,String pChoice) {
-        
-    }
-    public static int pChoice() {
-        
+    public static String pChoice() {
+        // Input: idek yet
     }
 }
