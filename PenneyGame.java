@@ -52,7 +52,7 @@ public class PenneyGame {
             System.out.println("In that case I'll bet on "+cpuChoice);
         }
         
-        play(pChoice,cpuChoice);
+        System.out.println("\n"+play(pChoice,cpuChoice);
         
     }
     }
@@ -137,7 +137,7 @@ public class PenneyGame {
             }
         }
     }
-    public static void play(String pChoice,String cpuChoice) {
+    public static String play(String pChoice,String cpuChoice) {
         System.out.println("\nNow flipping!");
         String flips = "";
         while (true) {
@@ -145,11 +145,11 @@ public class PenneyGame {
             System.out.print(""+flips.charAt(flips.length()-1));
             
         if (flips.length()>=3)
-            if (flips.substring(flips.length()-3).equals(cpuChoice)) {
-                System.out.println("\nI win!!!");
-            }else if (flips.substring(flips.length()-3).equals(pChoice)) {
-                System.out.println("\nYou won!");
-            }
+            if (flips.substring(flips.length()-3).equals(cpuChoice))
+                return "I win!!!";
+            else if (flips.substring(flips.length()-3).equals(pChoice))
+                return "You won!";
+            
 
             wait(300);
         }
