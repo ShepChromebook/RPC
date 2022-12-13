@@ -32,7 +32,7 @@ public class PenneyGame {
         System.out.println("Would you like to see an example?");
         if (chooseExample())
             example();
-        wait(200);
+        wait(400);
     
         System.out.println("Okay, how'd you like to play this?\n"
                     +"  0) Easy: I choose first, randomly\n"
