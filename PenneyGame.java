@@ -32,7 +32,8 @@ public class PenneyGame {
         System.out.println("Would you like to see an example?");
         if (chooseExample())
             example();
-
+        wait(200);
+    
         System.out.println("Okay, how'd you like to play this?\n"
                     +"  0) Easy: I choose first, randomly\n"
                     +"  1) Normal: I choose first, strategically\n"
@@ -66,6 +67,7 @@ public class PenneyGame {
         if (INPUT.equals("yes") || INPUT.equals("y"))
             return true;
         //else
+            wait(200);
             System.out.println("Skipping the example then");
             return false;
     }
