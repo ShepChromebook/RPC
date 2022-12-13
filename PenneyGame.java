@@ -14,14 +14,16 @@ public class PenneyGame {
     /**
      * @return pseudo-random  0 or 1
      */
-    private static int coinFlip() {
-        return (int)( Math.random()*2 );
+    private static String coinFlip() {
+        if ( (int)( Math.random()*2 ) == 0)
+            return "H";
+        return "T";
     }
     //
     private static Scanner input = new Scanner(System.in);
     //
     public static void main(String[] args) {
-        while (true) {
+    while (true) {
 
         System.out.println("A coin will be flipped over and over.");
         System.out.println("The goal is to predict a pattern appearing, Ex: 3 heads ina row.");
@@ -50,7 +52,7 @@ public class PenneyGame {
         
         play(pChoice,cpuChoice);
         
-        }
+    }
     }
     /**
      * @return true if player inputs "yes"/"y", false otherwise
@@ -136,7 +138,8 @@ public class PenneyGame {
     }
     public static void play(String pChoice,String cpuChoice) {
         while (true) {
-            
+            String flips += coinFlip();
+
         }
     }
 }
