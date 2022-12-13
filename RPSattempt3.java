@@ -24,7 +24,7 @@ public class RPSattempt3 {
             System.out.print(str.charAt(i));
         }
     }
-    //
+    // easier to have as static rater than passing down and back up through 3 methods
     private static Scanner input = new Scanner(System.in);
     private static int pWins = 0;
     private static int cpuWins = 0;
