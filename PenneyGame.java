@@ -39,14 +39,16 @@ public class PenneyGame {
                     +"  2) Hard: You choose first, I choose strategically");
         int difficulty = chooseDifficulty();
 
+        String pChoice = "";
+        String cpuChoice = "";
         if (difficulty!=2) {
-            String cpuChoice = cpuChoice(difficulty,"");
+            cpuChoice = cpuChoice(difficulty,"");
             System.out.println("I'll bet on "+cpuChoice+"\nNow you choose:");
-            String pChoice = pChoice(cpuChoice);
+            pChoice = pChoice(cpuChoice);
         } else {
             System.out.println("Alright, you choose first");
-            String pChoice = pChoice("");
-            String cpuChoice = cpuChoice(difficulty,pChoice);
+            pChoice = pChoice("");
+            cpuChoice = cpuChoice(difficulty,pChoice);
             System.out.println("In that case I'll bet on "+cpuChoice);
         }
         
