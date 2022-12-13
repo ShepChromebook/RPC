@@ -43,12 +43,14 @@ public class PenneyGame {
         String cpuChoice = "";
         if (difficulty!=2) {
             cpuChoice = cpuChoice(difficulty,"");
+            wait(500);
             System.out.println("I'll bet on "+cpuChoice+"\nNow you choose:");
             pChoice = pChoice(cpuChoice);
         } else {
             System.out.println("Alright, you choose first");
             pChoice = pChoice("");
             cpuChoice = cpuChoice(difficulty,pChoice);
+            wait(500);
             System.out.println("In that case I'll bet on "+cpuChoice);
         }
         
