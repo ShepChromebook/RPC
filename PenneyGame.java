@@ -24,14 +24,13 @@ public class PenneyGame {
     //
     public static void main(String[] args) {
     while (true) {
-
-        System.out.println("A coin will be flipped over and over.");
+        System.out.println("\n\nA coin will be flipped over and over.");
         System.out.println("The goal is to predict a pattern appearing, Ex: 3 heads ina row.");
-        wait(200);
+        wait(400);
 
         System.out.println("Would you like to see an example?");
         if (chooseExample())
-            example();
+            System.out.println(play("HHH","TTT"));
         wait(400);
     
         System.out.println("Okay, how'd you like to play this?\n"
@@ -56,7 +55,7 @@ public class PenneyGame {
         }
         wait(600);
         System.out.println("\n"+play(pChoice,cpuChoice));
-        
+        wait(1000);
     }
     }
     /**
@@ -70,12 +69,6 @@ public class PenneyGame {
             wait(200);
             System.out.println("Skipping the example then");
             return false;
-    }
-    /**
-     * Simulate game
-     */
-    public static void example() {
-        System.out.println("Simulate");
     }
     /**
      * @return player's input as 0/e/easy=0, 1/n/normal=1, else=2
@@ -142,7 +135,7 @@ public class PenneyGame {
         }
     }
     public static String play(String pChoice,String cpuChoice) {
-        System.out.println("\nNow flipping!");
+        System.out.println("\nNow flipping!  Your choice:"+pChoice+" My choice:"+cpuChoice);
         String flips = "";
         while (true) {
             flips += coinFlip();
@@ -150,7 +143,7 @@ public class PenneyGame {
             
         if (flips.length()>=3)
             if (flips.substring(flips.length()-3).equals(cpuChoice))
-                return "I win!!!";
+                return "I WIN!!!";
             else if (flips.substring(flips.length()-3).equals(pChoice))
                 return "You won!";
             
