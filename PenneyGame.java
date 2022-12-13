@@ -143,9 +143,11 @@ public class PenneyGame {
         while (true) {
             flips += coinFlip();
             System.out.print(""+flips.charAt(flips.length()-1));
+            
+        if (flips.length()>=3)
             if (flips.substring(flips.length()-3).equals(cpuChoice)) {
                 System.out.println("\nI win!!!");
-            } if (flips.substring(flips.length()-3).equals(pChoice)) {
+            }else if (flips.substring(flips.length()-3).equals(pChoice)) {
                 System.out.println("\nYou won!");
             }
 
