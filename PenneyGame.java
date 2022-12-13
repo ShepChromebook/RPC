@@ -54,7 +54,7 @@ public class PenneyGame {
             wait(500);
             System.out.println("In that case I'll bet on "+cpuChoice);
         }
-        
+        wait(600);
         System.out.println("\n"+play(pChoice,cpuChoice));
         
     }
