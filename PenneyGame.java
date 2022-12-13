@@ -52,7 +52,7 @@ public class PenneyGame {
             System.out.println("In that case I'll bet on "+cpuChoice);
         }
         
-        System.out.println("\n"+play(pChoice,cpuChoice);
+        System.out.println("\n"+play(pChoice,cpuChoice));
         
     }
     }
