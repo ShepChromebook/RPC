@@ -155,7 +155,7 @@ public class PenneyGame {
                 return "You won!";
             
 
-            wait(300);
+            wait(500);
         }
     }
 }
