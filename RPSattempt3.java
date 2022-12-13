@@ -40,14 +40,16 @@ public class RPSattempt3 {
             
             System.out.println("How many games should we do?");
             int NUM_OF_GAMES_TO_PLAY = chooseNumOfGames();
-            
-            System.out.println("Choose Rock(R), Paper(P), or Scissors(S)");
-            int pChoice = pChoice();
+            while (pWins+cpuWins < NUM_OF_GAMES_TO_PLAY && (pWins <= NUM_OF_GAMES_TO_PLAY/2)){    
+                System.out.println("Choose Rock(R), Paper(P), or Scissors(S)");
+                int pChoice = pChoice();
 
-            int cpuChoice = (int)(Math.random()*3); //range 0-2
-            suspensefulPrint("Alright.. I choose... "+cpuChoiceToString(cpuChoice),400);
+                int cpuChoice = (int)(Math.random()*3); //range 0-2
+                suspensefulPrint("Alright.. I choose... "+cpuChoiceToString(cpuChoice),400);
 
-            roundResults(pChoice,cpuChoice);
+                printFists(pChoice,cpuChoice);
+                System.out.println( whoWon(pChoice, cpuChoice) );
+            }
         }
         System.out.println("goodbye");
         input.close();
@@ -101,7 +103,11 @@ public class RPSattempt3 {
             default: return "SCISSORS!";
         }
     }
-    public static void roundResults(int pChoice, int cpuChoice) {
+    /**
+     * Prints out the fists
+     * @param pChoice @param cpuChoice MUST be 0, 1, or 2.
+     */
+    public static void printFists(int pChoice, int cpuChoice) {
         String[] leftRPS = new String[] {
             "You _______       ", //'You' to show which side is You or CPU
             "---'   ____)      ", //All of the ascii art is 18 chars
@@ -149,11 +155,12 @@ public class RPSattempt3 {
             System.out.println( leftRPS[i + 6*(pChoice)] +"    "+rightRPS[i + 6*(cpuChoice)] );
             wait(170);
         }
-        System.out.println("\n"+whoWon(pChoice,cpuChoice));
     }
+    /**
+     * @param pChoice @param cpuChoice Should be 0, 1, or 2.
+     * @return Checks if tied. Checks if player won: 2 beats 0, 0 beats 1, 1 beats 2. Else, cpu won.
+     */
     public static String whoWon(int pChoice, int cpuChoice) {
-        //     2 -> 1 -> 0      //if pChoice is one more than cpuChoice, then player won
-        //0 -> 2            //or if pChoice==1 && cpuChoice == 3
         if ( (pChoice == cpuChoice+1) || (pChoice==0 && cpuChoice==2)) {
             RPSattempt3.pWins++;
             return "You won!";
