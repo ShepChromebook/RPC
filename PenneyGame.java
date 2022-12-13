@@ -147,13 +147,12 @@ public class PenneyGame {
             flips += coinFlip();
             System.out.print(""+flips.charAt(flips.length()-1));
             wait(400);
-        if (flips.length()>=3)
-            if (flips.substring(flips.length()-3).equals(cpuChoice))
-                return "I WIN!!!";
-            else if (flips.substring(flips.length()-3).equals(pChoice))
-                return "You won!";
-            
-
+            if (flips.length()>=3)
+                if (flips.substring(flips.length()-3).equals(cpuChoice))
+                    return "I WIN!!!";
+                else if (flips.substring(flips.length()-3).equals(pChoice))
+                    return "You won!";
+                
             wait(500);
         }
     }
