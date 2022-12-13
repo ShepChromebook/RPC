@@ -99,7 +99,6 @@ public class PenneyGame {
     public static String cpuChoice(int difficulty,String pChoice) {
         if (difficulty==0 || difficulty==1) {
             int random8 = (int)(Math.random()*8);
-
             if (difficulty==1) { random8 /= 2; }
 
             switch (random8) { //"HHH" "HHT" "HTH" "HTT" "THH" "THT" "TTH" "TTT"
@@ -139,9 +138,18 @@ public class PenneyGame {
         }
     }
     public static void play(String pChoice,String cpuChoice) {
+        System.out.println("\nNow flipping!");
+        String flips = "";
         while (true) {
-            String flips += coinFlip();
+            flips += coinFlip();
+            System.out.print(""+flips.charAt(flips.length()-1));
+            if (flips.substring(flips.length()-3).equals(cpuChoice)) {
 
+            } if (flips.substring(flips.length()-3).equals(pChoice)) {
+                
+            }
+
+                
         }
     }
 }
