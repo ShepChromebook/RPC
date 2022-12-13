@@ -30,10 +30,10 @@ public class PenneyGame {
 
         System.out.println("Would you like to see an example?");
         if (chooseExample())
-            System.out.println(play("HHH","TTT"));
+            System.out.println("\n"+play("HHH","TTT"));
         wait(400);
     
-        System.out.println("Okay, how'd you like to play this?\n"
+        System.out.println("\nSo, how'd you like to play this?\n"
                     +"  0) Easy: I choose first, randomly\n"
                     +"  1) Normal: I choose first, strategically\n"
                     +"  2) Hard: You choose first, I choose strategically");
@@ -134,13 +134,19 @@ public class PenneyGame {
             }
         }
     }
+    /**
+     * plays Penney's Game. Should be used in: System.out.println("\n"+play(pChoice,cpuChoice));
+     * @param pChoice the player's choice, must be in HHH/TTT format
+     * @param cpuChoice the cpu's choice, must be in HHH/TTT format
+     * @return returns who won, again the method should be in a Sys out print
+     */
     public static String play(String pChoice,String cpuChoice) {
         System.out.println("\nNow flipping!  Your choice:"+pChoice+" My choice:"+cpuChoice);
         String flips = "";
         while (true) {
             flips += coinFlip();
             System.out.print(""+flips.charAt(flips.length()-1));
-            
+            wait(400);
         if (flips.length()>=3)
             if (flips.substring(flips.length()-3).equals(cpuChoice))
                 return "I WIN!!!";
