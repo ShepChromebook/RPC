@@ -92,9 +92,9 @@ public class PenneyGame {
         }
     }
     /**
-     * @param difficulty 0)Easy; choose random. 1)Normal; strategy. 2)Hard; reply to pChoice
-     * @param pChoice should be in HHT format
-     * @return cpu's choice, cannot == pChoice
+     * @param difficulty 0)Easy; choose randomly  1)Normal; strategy  2)Hard; reply to pChoice
+     * @param pChoice If difficulty is not 0 or 1, pChoice is required and needs to be in "HHT" format
+     * @return cpu's choice (Note: pChoice is only taken into account when difficulty is not 0 or 1)
      */
     public static String cpuChoice(int difficulty,String pChoice) {
         if (difficulty==0 || difficulty==1) {
@@ -144,12 +144,12 @@ public class PenneyGame {
             flips += coinFlip();
             System.out.print(""+flips.charAt(flips.length()-1));
             if (flips.substring(flips.length()-3).equals(cpuChoice)) {
-
+                System.out.println("\nI win!!!");
             } if (flips.substring(flips.length()-3).equals(pChoice)) {
-                
+                System.out.println("\nYou won!");
             }
 
-                
+            wait(300);
         }
     }
 }
