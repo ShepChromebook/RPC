@@ -155,12 +155,12 @@ public class RPSattempt3 {
         //     2 -> 1 -> 0      //if pChoice is one more than cpuChoice, then player won
         //0 -> 2            //or if pChoice==1 && cpuChoice == 3
         if ( (pChoice == cpuChoice+1) || (pChoice==0 && cpuChoice==2)) {
-            RPSmemoryFix.pWins++;
+            RPSattempt3.pWins++;
             return "You won!";
         }
         if (pChoice == cpuChoice) return "woah, a tie?";
         
-        RPSmemoryFix.cpuWins++;
+        RPSattempt3.cpuWins++;
         return "I WON!!!!";
     }
 }
