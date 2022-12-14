@@ -38,26 +38,30 @@ public class RPSattempt3 {
             if (!choosePlay())
                 break;
             
-            System.out.println("How many games should we do?");
+            System.out.println("How many games should we play to?");
             int numOfGames = chooseNumOfGames();
+            System.out.println("Aight, best out of "+numOfGames);
+
             while (pWins+cpuWins < numOfGames && (pWins <= numOfGames/2) && (cpuWins <= numOfGames/2))
             {    
                 System.out.println("Choose Rock(R), Paper(P), or Scissors(S)");
                 int pChoice = pChoice();
 
                 int cpuChoice = (int)(Math.random()*3); //range 0-2
-                suspensefulPrint("Alright.. I choose... "+cpuChoiceToString(cpuChoice),400);
+                suspensefulPrint("Alright.. I choose... "+cpuChoiceToString(cpuChoice)+"\n",400);
 
                 printFists(pChoice,cpuChoice);
                 wait(300);
-                System.out.println( whoWon(pChoice, cpuChoice) );
+                System.out.println( whoWon(pChoice, cpuChoice) ); //also updates the win count
                 wait(500);
                 System.out.println("You: "+RPSattempt3.pWins+"  Me: "+RPSattempt3.cpuWins);
                 wait(500);
+                System.out.println("---\nNext round:");
             }
-            System.out.println("Oop we're done!");
+            System.out.println("Oop we're done! Looks like the final winner was.. "+whoHasMostWins());
+            wait(500);
+            suspensefulPrint("New game in a second....\n\n\n\n",500);
             
-            suspenseful
         }
         System.out.println("goodbye");
         input.close();
@@ -176,6 +180,13 @@ public class RPSattempt3 {
         if (pChoice == cpuChoice) return "woah, a tie?";
         
         RPSattempt3.cpuWins++;
-        return "I WON!!!!";
+        return "I WON!!!";
+    }
+    /**
+     * @return if RPSattempt3.pWins > RPSattempt3.cpuWins return "You!";  Else return "ME!!!!";
+     */
+    public static String whoHasMostWins() {
+        if (RPSattempt3.pWins > RPSattempt3.cpuWins) return "You!";
+        return "ME!!!!";
     }
 }
