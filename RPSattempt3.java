@@ -19,7 +19,7 @@ public class RPSattempt3 {
      */
     private static void suspensefulPrint(String str,int ms) {
         for (int i=0; i<str.length(); i++) {
-            if (str.charAt(i)=='.' || str.charAt(i)=='!')   //
+            if (str.charAt(i)=='.' || str.charAt(i)=='!')   //CHANGE THIS TO SMTH ELSE!!!
                 wait(ms);
             System.out.print(str.charAt(i));
         }
