@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.*;
-public class RPSattempt3 {
+public class MyRPS_v1 {
     /**
      * @param ms number of milliseconds to sleep for
      */
@@ -54,7 +54,7 @@ public class RPSattempt3 {
                 wait(300);
                 System.out.print( "\n"+whoWon(pChoice, cpuChoice) ); //also updates the win count
                 wait(500);
-                System.out.println("    You: "+RPSattempt3.pWins+"  Me: "+RPSattempt3.cpuWins);
+                System.out.println("    You: "+MyRPS_v1.pWins+"  Me: "+MyRPS_v1.cpuWins);
                 wait(500);
                 System.out.println("_ _ _ _\nNext round:");
             }
@@ -62,8 +62,8 @@ public class RPSattempt3 {
             wait(500);
             suspensefulPrint("\nNew game in a second....\n\n\n\n",500);
             
-            RPSattempt3.pWins = 0;
-            RPSattempt3.cpuWins = 0;
+            MyRPS_v1.pWins = 0;
+            MyRPS_v1.cpuWins = 0;
         }
         System.out.println("goodbye");
         input.close();
@@ -178,20 +178,20 @@ public class RPSattempt3 {
      */
     public static String whoWon(int pChoice, int cpuChoice) {
         if ( (pChoice == cpuChoice+1) || (pChoice==0 && cpuChoice==2)) {
-            RPSattempt3.pWins++;
+            MyRPS_v1.pWins++;
             return "You won!";
         }
         if (pChoice == cpuChoice) return "woah, a tie?";
         
-        RPSattempt3.cpuWins++;
+        MyRPS_v1.cpuWins++;
         return "I WON!!!";
     }
     /**
-     * @return if RPSattempt3.pWins > RPSattempt3.cpuWins return "You!";  Else return "ME!!!!";
+     * @return if MyRPS_v1.pWins > MyRPS_v1.cpuWins return "You!";  Else return "ME!!!!";
      */
     public static String whoHasMostWins() {
-        if (RPSattempt3.pWins > RPSattempt3.cpuWins) return "You!";
-        if (RPSattempt3.pWins < RPSattempt3.cpuWins) return "ME!!!!";
+        if (MyRPS_v1.pWins > MyRPS_v1.cpuWins) return "You!";
+        if (MyRPS_v1.pWins < MyRPS_v1.cpuWins) return "ME!!!!";
         else    return "o.0 a tie in the final game?";
     }
 }
