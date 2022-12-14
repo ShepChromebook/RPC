@@ -52,16 +52,15 @@ public class RPSattempt3 {
 
                 printFists(pChoice,cpuChoice);
                 wait(300);
-                System.out.println( "\n"+whoWon(pChoice, cpuChoice) ); //also updates the win count
+                System.out.print( "\n"+whoWon(pChoice, cpuChoice) ); //also updates the win count
                 wait(500);
-                System.out.println("You: "+RPSattempt3.pWins+"  Me: "+RPSattempt3.cpuWins);
+                System.out.println("    You: "+RPSattempt3.pWins+"  Me: "+RPSattempt3.cpuWins);
                 wait(500);
                 System.out.println("_ _ _ _\nNext round:");
             }
-            //
             System.out.println("Oop we're done! Looks like the final winner was.. "+whoHasMostWins());
             wait(500);
-            suspensefulPrint("New game in a second....\n\n\n\n",500);
+            suspensefulPrint("\nNew game in a second....\n\n\n\n",500);
             
             RPSattempt3.pWins = 0;
             RPSattempt3.cpuWins = 0;
@@ -192,6 +191,7 @@ public class RPSattempt3 {
      */
     public static String whoHasMostWins() {
         if (RPSattempt3.pWins > RPSattempt3.cpuWins) return "You!";
-        else    return "ME!!!!";
+        if (RPSattempt3.pWins < RPSattempt3.cpuWins) return "ME!!!!";
+        else    return "o.0 a tie in the final game?";
     }
 }
