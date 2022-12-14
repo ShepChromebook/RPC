@@ -19,9 +19,9 @@ public class RPSattempt3 {
      */
     private static void suspensefulPrint(String str,int ms) {
         for (int i=0; i<str.length(); i++) {
-            if (str.charAt(i)=='.' || str.charAt(i)=='!')   //CHANGE THIS TO SMTH ELSE!!!
-                wait(ms);
             System.out.print(str.charAt(i));
+            if (str.charAt(i)=='.' || str.charAt(i)=='!')  //CHANGE THIS TO SMTH ELSE!!!
+                wait(ms);
         }
     }
     // easier to have as static rater than passing down and back up through 3 methods
@@ -52,16 +52,19 @@ public class RPSattempt3 {
 
                 printFists(pChoice,cpuChoice);
                 wait(300);
-                System.out.println( whoWon(pChoice, cpuChoice) ); //also updates the win count
+                System.out.println( "\n"+whoWon(pChoice, cpuChoice) ); //also updates the win count
                 wait(500);
                 System.out.println("You: "+RPSattempt3.pWins+"  Me: "+RPSattempt3.cpuWins);
                 wait(500);
-                System.out.println("---\nNext round:");
+                System.out.println("_ _ _ _\nNext round:");
             }
+            //
             System.out.println("Oop we're done! Looks like the final winner was.. "+whoHasMostWins());
             wait(500);
             suspensefulPrint("New game in a second....\n\n\n\n",500);
             
+            RPSattempt3.pWins = 0;
+            RPSattempt3.cpuWins = 0;
         }
         System.out.println("goodbye");
         input.close();
@@ -70,10 +73,13 @@ public class RPSattempt3 {
      * @return player input, y/yes=true   Else=false
      */
     public static boolean choosePlay() {
-        String INPUT = input.nextLine().toLowerCase();
-        if (INPUT.equals("yes") || INPUT.equals("y"))
-            return true;
-        return false;
+        while (true) {
+            String INPUT = input.nextLine().toLowerCase();
+            switch (INPUT) {
+                case "yes": case "y": case "sure": return true;
+                case "no": case "n": case "nah": return false;
+            } System.out.println("I didn't understand that, try saying \"yes\"");
+        }
     }
     /**
      * @return First positive (!=0) integer that player inputs. Keeps asking until a correct int is entered.
@@ -82,7 +88,7 @@ public class RPSattempt3 {
         while (true) {
             String INPUT = input.nextLine();
             if (Pattern.matches("^[1-9]+[0-9]*$",INPUT)) //if matchFound
-                return Integer.parseInt(INPUT);         
+                return Integer.parseInt(INPUT);
             else
                 System.out.println("I didn't understand that, try saying \"3\"");
         }
@@ -112,12 +118,11 @@ public class RPSattempt3 {
         switch (cpuChoice) {
             case 0: return "ROCK!";
             case 1: return "PAPER!";
-            default: return "SCISSORS!";
-        }
+        }   return "SCISSORS!";
     }
     /**
      * Prints out the fists
-     * @param pChoice @param cpuChoice MUST be 0, 1, or 2.
+     * @param pChoice|cpuChoice MUST be 0, 1, or 2.
      */
     public static void printFists(int pChoice, int cpuChoice) {
         String[] leftRPS = new String[] {
@@ -169,7 +174,7 @@ public class RPSattempt3 {
         }
     }
     /**
-     * @param pChoice @param cpuChoice Should be 0, 1, or 2.
+     * @param pChoice|cpuChoice Should be 0, 1, or 2.
      * @return Checks if tied. Checks if player won: 2 beats 0, 0 beats 1, 1 beats 2. Else, cpu won.
      */
     public static String whoWon(int pChoice, int cpuChoice) {
@@ -187,6 +192,6 @@ public class RPSattempt3 {
      */
     public static String whoHasMostWins() {
         if (RPSattempt3.pWins > RPSattempt3.cpuWins) return "You!";
-        return "ME!!!!";
+        else    return "ME!!!!";
     }
 }
