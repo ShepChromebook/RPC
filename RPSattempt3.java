@@ -14,12 +14,12 @@ public class RPSattempt3 {
     }
     /**
      * Prints out str, except waits `ms` milliseconds before printing each '.' & '!'
-     * @param str
-     * @param ms
+     * @param str string to iterate through
+     * @param ms number of milliseconds to wait for
      */
     private static void suspensefulPrint(String str,int ms) {
         for (int i=0; i<str.length(); i++) {
-            if (str.charAt(i)=='.' || str.charAt(i)=='!')
+            if (str.charAt(i)=='.' || str.charAt(i)=='!')   //
                 wait(ms);
             System.out.print(str.charAt(i));
         }
@@ -39,8 +39,9 @@ public class RPSattempt3 {
                 break;
             
             System.out.println("How many games should we do?");
-            int NUM_OF_GAMES_TO_PLAY = chooseNumOfGames();
-            while (pWins+cpuWins < NUM_OF_GAMES_TO_PLAY && (pWins <= NUM_OF_GAMES_TO_PLAY/2)){    
+            int numOfGames = chooseNumOfGames();
+            while (pWins+cpuWins < numOfGames && (pWins <= numOfGames/2) && (cpuWins <= numOfGames/2))
+            {    
                 System.out.println("Choose Rock(R), Paper(P), or Scissors(S)");
                 int pChoice = pChoice();
 
@@ -48,8 +49,15 @@ public class RPSattempt3 {
                 suspensefulPrint("Alright.. I choose... "+cpuChoiceToString(cpuChoice),400);
 
                 printFists(pChoice,cpuChoice);
+                wait(300);
                 System.out.println( whoWon(pChoice, cpuChoice) );
+                wait(500);
+                System.out.println("You: "+RPSattempt3.pWins+"  Me: "+RPSattempt3.cpuWins);
+                wait(500);
             }
+            System.out.println("Oop we're done!");
+            
+            suspenseful
         }
         System.out.println("goodbye");
         input.close();
