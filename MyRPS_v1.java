@@ -18,10 +18,10 @@ public class MyRPS_v1 {
      * @param ms number of milliseconds to wait for
      */
     private static void suspensefulPrint(String str,int ms) {
-        for (int i=0; i<str.length(); i++) {
-            System.out.print(str.charAt(i));
-            if (str.charAt(i)=='.' || str.charAt(i)=='!')  //CHANGE THIS TO SMTH ELSE!!!
-                wait(ms);
+        String[] splitStr = str.split("(?<=[.!])"); //"Lookbehind" for chars in [] //Add "lookahead" so consecutives are grouped together (?=[^\.\!])
+        for (String part : splitStr) {
+            System.out.print(part);
+            wait(ms);
         }
     }
     // easier to have as static rater than passing down and back up through 3 methods
@@ -52,13 +52,13 @@ public class MyRPS_v1 {
 
                 printFists(pChoice,cpuChoice);
                 wait(300);
-                System.out.print( "\n"+whoWon(pChoice, cpuChoice) ); //also updates the win count
+                System.out.print( "\n"+whoWonRound(pChoice, cpuChoice) ); //also updates the win count
                 wait(500);
                 System.out.println("    You: "+MyRPS_v1.pWins+"  Me: "+MyRPS_v1.cpuWins);
                 wait(500);
                 System.out.println("_ _ _ _\nNext round:");
             }
-            System.out.println("Oop we're done! Looks like the final winner was.. "+whoHasMostWins());
+            System.out.println("Oop we're done! Looks like the final winner was.. "+whoWonGame());
             wait(500);
             suspensefulPrint("\nNew game in a second....\n\n\n\n",500);
             
@@ -176,7 +176,7 @@ public class MyRPS_v1 {
      * @param pChoice|cpuChoice Should be 0, 1, or 2.
      * @return Checks if tied. Checks if player won: 2 beats 0, 0 beats 1, 1 beats 2. Else, cpu won.
      */
-    public static String whoWon(int pChoice, int cpuChoice) {
+    public static String whoWonRound(int pChoice, int cpuChoice) {
         if ( (pChoice == cpuChoice+1) || (pChoice==0 && cpuChoice==2)) {
             MyRPS_v1.pWins++;
             return "You won!";
@@ -189,7 +189,7 @@ public class MyRPS_v1 {
     /**
      * @return if MyRPS_v1.pWins > MyRPS_v1.cpuWins return "You!";  Else return "ME!!!!";
      */
-    public static String whoHasMostWins() {
+    public static String whoWonGame() {
         if (MyRPS_v1.pWins > MyRPS_v1.cpuWins) return "You!";
         if (MyRPS_v1.pWins < MyRPS_v1.cpuWins) return "ME!!!!";
         else    return "o.0 a tie in the final game?";
