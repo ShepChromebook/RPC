@@ -1,4 +1,3 @@
-/**
 Java has a library called Swing which is a graphical user interface (GUI) toolkit that includes buttons and other standard graphical components. Java Swing is not covered on the College Board AP exam, but it is fun to use. This lesson is an optional introduction to Java Swing and using its classes.
 
 The graphical components in Java Swing are all classes, and to use them, you must declare objects of those classes. In this lesson, we will show the following Swing classes:
@@ -34,4 +33,3 @@ In replit, there is no GUI designer available, but it can display Java Swing GUI
 
 Here’s a Java Swing Example on repl that sets up a JFrame with a JButton and a JLabel. It calls a special method called addActionListener where you can put the code to be executed when you click on a button. Can you add another button to it? Remember that you will need to create a JButton object, setBounds for it, and add it to the frame. Copy the addActionListener code and change it to work for your new button to say Good Bye instead of hello.
 https://firewalledreplit.com/@BerylHoffman/JavaSwingHello
-*/
